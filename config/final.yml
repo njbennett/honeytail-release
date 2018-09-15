@@ -1,0 +1,5 @@
+name: honeytail
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /tmp/honeytail-blobs

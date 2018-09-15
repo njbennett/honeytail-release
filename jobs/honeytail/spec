@@ -1,0 +1,22 @@
+---
+name: honeytail
+
+templates:
+  bpm.yml.erb: config/bpm.yml
+  honeytail.conf.erb: config/honeytail.conf
+
+packages: []
+
+properties:
+  parser:
+    description: Parser module to use. Use honeytail --list to list available options
+    default: json
+
+  write_key:
+    description: Team write key
+
+  log_files:
+    description: Array of logfiles to tail
+
+  dataset:
+    description: Name of the dataset

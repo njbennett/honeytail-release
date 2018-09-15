@@ -1,0 +1,8 @@
+# jobs/honeytail/templates/bpm.yml.erb
+processes:
+  - name: honeytail
+    executable: /var/vcap/jobs/honeytail/bin/honeytail
+    args:
+    - -c
+    - /var/vcap/jobs/honeytail/config/honeytail.conf
+    env:

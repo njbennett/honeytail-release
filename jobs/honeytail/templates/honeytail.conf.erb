@@ -1,0 +1,10 @@
+[Required Options]
+ParserName = <%= properties.parser %>
+
+WriteKey = <%= properties.write_key %>
+
+<% properties.log_files.each do |logfile| %>
+LogFiles = <%= logfile %>
+<% end %>
+
+Dataset = <%= properties.dataset %>
