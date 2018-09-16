@@ -4,6 +4,7 @@ name: honeytail
 templates:
   bpm.yml.erb: config/bpm.yml
   honeytail.conf.erb: config/honeytail.conf
+  honeytail: bin/honeytail
 
 packages:
   - honeytail

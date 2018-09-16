@@ -7,7 +7,7 @@
     properties:
       write_key: ((honeytail_write_key))
       log_files:
-        - rep/rep.stdout.log
+        - honeytail/bpm.log
       dataset: ((honeytail_dataset))
 
 - type: replace

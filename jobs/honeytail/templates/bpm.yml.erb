@@ -1,8 +1,10 @@
 # jobs/honeytail/templates/bpm.yml.erb
 processes:
   - name: honeytail
-    executable: /var/vcap/jobs/honeytail/bin/honeytail
+    executable: /var/vcap/packages/honeytail/bin/honeytail
     args:
     - -c
     - /var/vcap/jobs/honeytail/config/honeytail.conf
     env:
+    unsafe:
+      privileged: true
