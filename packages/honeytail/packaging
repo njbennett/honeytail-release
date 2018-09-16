@@ -5,5 +5,5 @@ mkdir ${BOSH_INSTALL_TARGET}/bin
 HONEYTAIL_VERSION=1.683
 
 echo "Copying honeytail to bin..."
-cp "honyetail_${HONEYTAIL_VERSION}_amd64.deb" "${BOSH_INSTALL_TARGET}/bin/honeytail"
+cp "honeytail/honeytail_${HONEYTAIL_VERSION}_amd64.deb" "${BOSH_INSTALL_TARGET}/bin/honeytail"
 

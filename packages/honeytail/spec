@@ -4,4 +4,4 @@ name: honeytail
 dependencies: []
 
 files:
-  - honeytail_1.683_amd64.deb
+  - honeytail/honeytail_1.683_amd64.deb
