@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/var/vcap/packages/honeytail/bin/honeytail "$@"
