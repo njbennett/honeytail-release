@@ -5,7 +5,8 @@ templates:
   bpm.yml.erb: config/bpm.yml
   honeytail.conf.erb: config/honeytail.conf
 
-packages: []
+packages:
+  - honeytail
 
 properties:
   parser:
