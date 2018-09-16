@@ -4,7 +4,7 @@ ParserName = <%= properties.parser %>
 WriteKey = <%= properties.write_key %>
 
 <% properties.log_files.each do |logfile| %>
-LogFiles = <%= logfile %>
+LogFiles = /var/vcap/sys/log/<%= logfile %>
 <% end %>
 
 Dataset = <%= properties.dataset %>
