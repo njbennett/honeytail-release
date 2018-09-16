@@ -59,6 +59,43 @@
       dataset: ((honeytail_dataset))
 
 - type: replace
+  path: /instance_groups/name=api/jobs/-
+  value:
+    name: honeytail
+    release: honeytail
+    properties:
+      write_key: ((honeytail_write_key))
+      log_files:
+      - bosh-dns/bosh_dns_health_ctl.stderr.log
+      - bosh-dns/bosh_dns.stdout.log
+      - bosh-dns/bosh_dns_resolvconf_ctl.stderr.log
+      - bosh-dns/bosh_dns_ctl.stderr.log
+      - bosh-dns/pre-start.stderr.log
+      - cc_uploader/bpm.log
+      - cc_uploader/cc_uploader.stdout.log
+      - route_registrar/bpm.log
+      - route_registrar/route_registrar.stdout.log
+      - policy-server/bpm.log
+      - policy-server/post-start.stderr.log
+      - policy-server/policy-server.stdout.log
+      - policy-server/pre-start.stdout.log
+      - routing-api/routing-api.stdout.log
+      - routing-api/bpm.log
+      - routing-api/routing-api.stderr.log
+      - consul_agent/consul_agent.stdout.log
+      - consul_agent/agent_ctl.err.log
+      - policy-server-internal/bpm.log
+      - policy-server-internal/policy-server-internal.stdout.log
+      - policy-server-internal/post-start.stderr.log
+      - cloud_controller_ng/bpm.log
+      - cloud_controller_ng/post-start.stderr.log
+      - cloud_controller_ng/cloud_controller_ng.log
+      - cloud_controller_ng/pre-start.stderr.log
+      - file_server/bpm.log
+      - file_server/file_server.stderr.log
+      - file_server/file_server.stdout.log
+
+- type: replace
   path: /releases/-
   value:
     name: honeytail
