@@ -8,3 +8,14 @@ LogFiles = /var/vcap/sys/log/<%= logfile %>
 <% end %>
 
 Dataset = <%= properties.dataset %>
+
+[ Application Options ]
+# add some BOSH-provided fields to all events
+AddFields = bosh.spec.address=<%=spec.address%>
+AddFields = bosh.spec.az=<%=spec.az%>
+AddFields = bosh.spec.bootstrap=<%=spec.bootstrap%>
+AddFields = bosh.spec.deployment=<%=spec.deployment%>
+AddFields = bosh.spec.id>=<%=spec.id%>
+AddFields = bosh.spec.index=<%=spec.index%>
+AddFields = bosh.spec.name=<%=spec.name%>
+AddFields = bosh.spec.network=<%=spec.network%>
