@@ -1,0 +1,17 @@
+---
+- type: replace
+  path: /instance_groups/name=diego-cell/jobs/-
+  value:
+    name: honeytail
+    release: honeytail
+    properties:
+      write_key: ((honeytail_write_key))
+      log_files:
+        - rep/rep.stdout.log
+      dataset: ((honeytail_dataset))
+
+- type: replace
+  path: /releases/-
+  value:
+    name: honeytail
+    version: latest
