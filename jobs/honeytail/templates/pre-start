@@ -1,6 +1,0 @@
-#!/bin/bash
-set -ex
-
-cp $(dirname $0)/../config/honeytail.upstart /etc/init/honeytail.conf
-
-initctl start honeytail || initctl restart honeytail

@@ -2,9 +2,9 @@
 name: honeytail
 
 templates:
-  honeytail.upstart: config/honeytail.upstart
+  bpm.yml.erb: config/bpm.yml
   honeytail.conf.erb: config/honeytail.conf
-  pre-start: bin/pre-start
+  honeytail: bin/honeytail
 
 packages:
   - honeytail

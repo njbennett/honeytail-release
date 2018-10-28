@@ -1,0 +1,6 @@
+# jobs/honeytail/monit
+check process honeytail
+  with pidfile /var/vcap/sys/run/bpm/honeytail/honeytail.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start honeytail"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop honeytail"
+  group vcap
