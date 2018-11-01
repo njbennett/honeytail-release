@@ -7,4 +7,5 @@ processes:
     - /var/vcap/jobs/honeytail/config/honeytail.conf
     env:
     unsafe:
-      privileged: true
+      unrestricted_volumes:
+      - /var/vcap/sys/logs
