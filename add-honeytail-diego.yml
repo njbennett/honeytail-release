@@ -17,7 +17,6 @@
         - route_emitter/route_emitter.stdout.log
         - route_emitter/bpm.log
         - route_emitter/route_emitter.stderr.log
-        - vxlan-policy-agent/post-start.stderr.log
         - vxlan-policy-agent/bpm.log
         - vxlan-policy-agent/vxlan-policy-agent.stdout.log
         - bosh-dns/pre-start.stderr.log
@@ -54,13 +53,6 @@
       - bosh-dns/bosh_dns_ctl.stderr.log
       - silk-controller/silk-controller.stdout.log
       - silk-controller/bpm.log
-      - silk-controller/post-start.stderr.log
-      - auctioneer/auctioneer.stderr.log
-      - auctioneer/auctioneer.stdout.log
-      - auctioneer/bpm.log
-      - ssh_proxy/ssh_proxy.stderr.log
-      - ssh_proxy/ssh_proxy.stdout.log
-      - ssh_proxy/bpm.log
 
 - type: replace
   path: /instance_groups/name=scheduler/jobs/-
@@ -76,6 +68,12 @@
         - bosh-dns/bosh_dns_ctl.stderr.log
         - bosh-dns/bosh_dns.stdout.log
         - bosh-dns/bosh_dns_resolvconf_ctl.stderr.log
+        - auctioneer/auctioneer.stderr.log
+        - auctioneer/auctioneer.stdout.log
+        - auctioneer/bpm.log
+        - ssh_proxy/ssh_proxy.stderr.log
+        - ssh_proxy/ssh_proxy.stdout.log
+        - ssh_proxy/bpm.log
 
 
 - type: replace
