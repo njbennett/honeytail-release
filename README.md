@@ -2,7 +2,7 @@
 
 Welcome to the highly experimental Honeytail BOSH release.
 
-Let me know if you're using it! I can be found at nbennett@pivotal.io
+Let me know if you're using it! If you work at Pivotal, drop by the #honeycombers Slack channel.
 
 # WARNINGS
 This release uses the unsafe `unrestricted_volumes` feature of BPM
