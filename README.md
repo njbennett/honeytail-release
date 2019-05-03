@@ -17,7 +17,21 @@ and/or go unmaintained for long periods of time.
 So just, y'know, keep that in mind
 before deploying somewhere you care about.
 
-# To Use
+# To Build
+```
+go get github.com/honeycombio/honeytail
+pushd $GOPATH/src/github.com/honeycombio/honeytail
+git co v1.0.1
+go build -o honeytail
+popd
+
+mkdir src
+# Fun fact: BOSH errors in a mysterious way if the src dir doesn't exist
+bosh add-blob ~/go/src/github.com/honeycombio/honeytail/honeytail honeytail/honeytail
+bosh create-release --force
+bosh upload-release
+```
+
 To build the release,
 you'll need to download the honeytail binary yourself
 and run `bosh add-blob` to make it available to the director.
