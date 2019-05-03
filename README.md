@@ -22,7 +22,7 @@ before deploying somewhere you care about.
 go get github.com/honeycombio/honeytail
 pushd $GOPATH/src/github.com/honeycombio/honeytail
 git co v1.0.1
-go build -o honeytail
+GOOS=linux go build -o honeytail
 popd
 
 mkdir src
