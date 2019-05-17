@@ -2,9 +2,8 @@ package main
 
 import (
 	"log"
-	"os/exec"
 
-	"github.com/pivotal/honeytail-release/src/honeyfab/honeyfab"
+	"github.com/njbennett/honeytail-release/src/honeyfab/honeyfab"
 )
 
 func main() {
@@ -22,9 +21,4 @@ func main() {
 	if err != nil {
 		log.Fatalf("writing honeytail.conf: %v", err)
 	}
-
-	cmd := exec.Command("/var/vcap/packages/honeytail/bin/honeytail",
-		"-c", "/var/vcap/jobs/honeytail/config/honeytail.conf")
-
-	cmd.Run()
 }
