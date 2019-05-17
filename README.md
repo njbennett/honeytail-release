@@ -1,6 +1,6 @@
 # Honeytail BOSH Release
 
-Welcome to the highly experimental Honeytail BOSH release.
+Welcome to the highly experimental [Honeytail](https://github.com/honeycombio/honeytail) BOSH release.
 
 Let me know if you're using it! If you work at Pivotal, drop by the #honeycombers Slack channel.
 
