@@ -30,7 +30,9 @@ func FindLogs(logDir string) ([]string, error) {
 func isStructuredLog(path string) bool {
 	f, err := os.Open(path)
 	if err != nil {
+		// haven't thought of a way to test this yet
 		log.Printf("could not open file %q: %v\n", path, err)
+		return false
 	}
 
 	reader := bufio.NewReader(f)
@@ -59,7 +61,7 @@ func WriteHoneytailConf(baseHoneytailConfPath string, newHoneytailConfPath strin
 
 	t, err := template.New("honeytail").Parse(string(baseHoneytailConf))
 	if err != nil {
-		return fmt.Errorf("parsing base template: %v", err)
+		return fmt.Errorf("base template %q is not a valid Go template: %v", baseHoneytailConfPath, err)
 	}
 
 	newHoneytailConfFile, err := os.Create(newHoneytailConfPath)
@@ -74,6 +76,7 @@ func WriteHoneytailConf(baseHoneytailConfPath string, newHoneytailConfPath strin
 
 	err = t.Execute(newHoneytailConfFile, HoneytailConf{LogFiles: logPaths})
 	if err != nil {
+		// not tested; not sure how to inject failure
 		return fmt.Errorf("executing template: %v", err)
 	}
 

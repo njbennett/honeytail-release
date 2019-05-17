@@ -8,7 +8,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/pivotal/honeytail-release/src/honeyfab/honeyfab"
+	"github.com/njbennett/honeytail-release/src/honeyfab/honeyfab"
 )
 
 var _ = Describe("Honeyfab", func() {
@@ -46,9 +46,10 @@ var _ = Describe("Honeyfab", func() {
 
 	Describe("WriteHoneytailConf", func() {
 		var (
-			baseHoneytailConfPath string
-			newHoneytailConfPath  string
-			expectedHoneytailConf string
+			baseHoneytailConfPath   string
+			newHoneytailConfPath    string
+			expectedHoneytailConf   string
+			brokenHoneytailConfPath string
 		)
 
 		BeforeEach(func() {
@@ -85,6 +86,49 @@ AddFields = bosh.spec.deployment=concourse
 			contents, err := ioutil.ReadFile(newHoneytailConfPath)
 			Expect(err).NotTo(HaveOccurred())
 			Expect(string(contents)).To(Equal(expectedHoneytailConf))
+		})
+
+		Context("when the base honeytail conf does not exist", func() {
+			BeforeEach(func() {
+				brokenHoneytailConfPath = filepath.Join(fixturesDir, "honeytail-nonexistent.conf")
+			})
+
+			It("returns an error", func() {
+				err := honeyfab.WriteHoneytailConf(brokenHoneytailConfPath, newHoneytailConfPath, logPaths)
+				Expect(err).To(HaveOccurred())
+
+				Expect(err.Error()).To(ContainSubstring(brokenHoneytailConfPath))
+				Expect(err.Error()).To(ContainSubstring("no such file or directory"))
+			})
+		})
+
+		Context("when the base honeytail conf is not a parseable Go template", func() {
+			BeforeEach(func() {
+				brokenHoneytailConfPath = filepath.Join(fixturesDir, "honeytail-broken.conf")
+			})
+
+			It("returns an error", func() {
+				err := honeyfab.WriteHoneytailConf(brokenHoneytailConfPath, newHoneytailConfPath, logPaths)
+				Expect(err).To(HaveOccurred())
+
+				Expect(err.Error()).To(ContainSubstring(brokenHoneytailConfPath))
+				Expect(err.Error()).To(ContainSubstring("is not a valid Go template"))
+			})
+		})
+
+		Context("when the new honeytail conf cannot be created", func() {
+			BeforeEach(func() {
+				brokenHoneytailConfPath = "/sbin/no-permission-to-write-here"
+			})
+
+			It("returns an error", func() {
+				err := honeyfab.WriteHoneytailConf(baseHoneytailConfPath, brokenHoneytailConfPath, logPaths)
+				Expect(err).To(HaveOccurred())
+
+				Expect(err.Error()).To(ContainSubstring(brokenHoneytailConfPath))
+				Expect(err.Error()).To(ContainSubstring("creating new honeytail.conf file"))
+				Expect(err.Error()).To(ContainSubstring("operation not permitted"))
+			})
 		})
 	})
 })
