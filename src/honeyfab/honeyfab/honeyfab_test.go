@@ -58,11 +58,11 @@ var _ = Describe("Honeyfab", func() {
 			newHoneytailConfPath = newHoneytailConf.Name()
 
 			expectedHoneytailConf = `[Required Options]
-ParserName = <%= properties.parser %>
+ParserName = json
 
-WriteKey = <%= properties.write_key %>
+WriteKey = some-write-key
 
-Dataset = <%= properties.dataset %>
+Dataset = some-dataset
 
 LogFiles = /var/vcap/sys/log/web/web.stdout.log
 LogFiles = /var/vcap/sys/log/ncp/ncp.stdout.log
@@ -71,14 +71,7 @@ LogFiles = /var/vcap/sys/log/uaa/uaa.stdout.log
 
 [ Application Options ]
 # add some BOSH-provided fields to all events
-AddFields = bosh.spec.address=<%=spec.address%>
-AddFields = bosh.spec.az=<%=spec.az%>
-AddFields = bosh.spec.bootstrap=<%=spec.bootstrap%>
-AddFields = bosh.spec.deployment=<%=spec.deployment%>
-AddFields = bosh.spec.id>=<%=spec.id%>
-AddFields = bosh.spec.index=<%=spec.index%>
-AddFields = bosh.spec.name=<%=spec.name%>
-AddFields = bosh.spec.network=<%=spec.network%>
+AddFields = bosh.spec.deployment=concourse
 `
 		})
 
