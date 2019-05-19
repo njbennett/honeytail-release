@@ -18,7 +18,7 @@ func FindLogs(logDir string) ([]string, error) {
 		if err != nil {
 			return fmt.Errorf("accessing path %q: %v\n", path, err)
 		}
-		if !info.IsDir() && isStructuredLog(path) {
+		if !info.IsDir() && IsStructuredLog(path) {
 			logPaths = append(logPaths, path)
 		}
 		return nil
@@ -27,10 +27,9 @@ func FindLogs(logDir string) ([]string, error) {
 	return logPaths, nil
 }
 
-func isStructuredLog(path string) bool {
+func IsStructuredLog(path string) bool {
 	f, err := os.Open(path)
 	if err != nil {
-		// haven't thought of a way to test this yet
 		log.Printf("could not open file %q: %v\n", path, err)
 		return false
 	}

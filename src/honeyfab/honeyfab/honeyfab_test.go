@@ -44,6 +44,40 @@ var _ = Describe("Honeyfab", func() {
 		})
 	})
 
+	Describe("IsStructuredLog", func() {
+		Context("given a json log file", func() {
+			It("returns true", func() {
+				logPath := filepath.Join(fixturesDir, "dir1/structured.log")
+
+				Expect(honeyfab.IsStructuredLog(logPath)).To(BeTrue())
+			})
+		})
+
+		Context("given an unstructured log file", func() {
+			It("returns false", func() {
+				logPath := filepath.Join(fixturesDir, "dir1/unstructured.log")
+
+				Expect(honeyfab.IsStructuredLog(logPath)).To(BeFalse())
+			})
+		})
+
+		Context("given an empty log file", func() {
+			It("returns false", func() {
+				logPath := filepath.Join(fixturesDir, "dir1/empty.log")
+
+				Expect(honeyfab.IsStructuredLog(logPath)).To(BeFalse())
+			})
+		})
+
+		Context("given a nonexistent log file", func() {
+			It("returns false", func() {
+				logPath := filepath.Join(fixturesDir, "dir1/nonexistent.log")
+
+				Expect(honeyfab.IsStructuredLog(logPath)).To(BeFalse())
+			})
+		})
+	})
+
 	Describe("WriteHoneytailConf", func() {
 		var (
 			baseHoneytailConfPath   string
